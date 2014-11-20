@@ -1,0 +1,56 @@
+/* Fluid 100 Grid System */
+
+*  {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@gutterSpace : 15px;
+
+[class*="sfCol_"]
+{
+    float: left;
+    min-height: 1px;
+    position: relative;
+}
+
+.sfInnerwrapper  [class*="sfCol_"], .gutterSpace
+{ padding:0px $gutterSpace;}
+
+.sfInnerwrapper .sfMoreblocks, .sfInnerwrapper .sfMoreblocks .sfColswrap
+{
+    margin:0px (-$gutterSpace);
+}
+ .sfMoreblocks:before, .sfMoreblocks:after
+{
+ visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;
+}
+
+
+@iterations:100;
+
+.loopingClass (@index) when (@index > 0) {
+
+	// .sfCol_100, .sfCol_99, .... , .sfCol_1
+	(~".myclass_@{index}") {
+		
+		width: (@index)%
+	}
+
+	// next iteration
+	.loopingClass(@index - 1);
+}
+
+.loopingClass (0) {}
+
+.loopingClass (@iterations);
+
+
+/* Equal Width Calibration */
+.sfFixed.sfCol_33 {
+    width:(100%/3);
+}
+.sfFixed.sfCol_16 {
+    width:(100%/6);
+}
