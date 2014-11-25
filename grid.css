@@ -4,8 +4,6 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* variables  */
-/* columns */
 [class*="sfCol_"] {
   float: left;
   min-height: 1px;
